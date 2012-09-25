@@ -15,7 +15,9 @@
 #   }
 #
 class php::pear($version = present) {
-  package { 'php-pear':
-    ensure => $version,
+  if ! defined(Package['php-pear']) {
+    package { 'php-pear':
+      ensure => $version,
+    }
   }
 }
