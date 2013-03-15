@@ -12,49 +12,62 @@
 class php::qatools {
   include php::qatools::discover
 
+  package { 'imagemagick':
+    ensure => present,
+  }
+
   php::pear::package { 'phing':
     repository => 'pear.phing.info',
   }
 
-  php::pear::package { 'PHP_PMD':
-    repository => 'pear.phpmd.org',
-  }
-
-  php::pear::package { 'phpcpd':
+  php::pear::package { 'phpunit':
     repository => 'pear.phpunit.de',
   }
 
-  php::pear::package { 'phploc':
-    repository => 'pear.phpunit.de',
+  php::pear::package { 'phpqatools':
+    repository => 'pear.phpqatools.org',
+    require => Package['imagemagick'],
   }
 
   php::pear::package { 'phpdcd':
     repository => 'pear.phpunit.de',
   }
 
-  php::pear::package { 'bytekit':
+  php::pear::package { 'PHP_PMD':
+    repository => 'pear.phpmd.org',
+  }
+
+  php::pear::package { 'hphpa':
     repository => 'pear.phpunit.de',
   }
 
-  php::pear::package { 'PHPDocumentor': 
-    repository => 'pear.phpdoc.org',
+  php::pear::package { 'eZComponents':
+    repository => 'components.ez.no', # TODO: use -a
   }
 
-  php::pear::package { 'PHP_CodeSniffer': }
-
-  php::pear::package { 'HTTP_Request2': }
-
-  php::pear::package { 'PHP_CodeBrowser':
-    repository => 'pear.phpunit.de',
+  php::pear::package { 'Finder':
+    repository => 'pear.symfony.com',
+    version => '2.1.8',
   }
+
+  php::pear::package { 'fDOMDocument':
+    repository => 'pear.netpirates.net',
+  }
+
+  # TODO:
+  # pear channel-discover pear.phpmd.org
+  # pear channel-discover pear.pdepend.org
+  # pear install --alldeps phpmd/PHP_PMD
+
 }
 
 class php::qatools::discover {
   php::pear::discover { 'pear.phing.info': }
-  php::pear::discover { 'pear.pdepend.org': }
-  php::pear::discover { 'pear.phpdoc.org': }
-  php::pear::discover { 'pear.phpmd.org': }
+  php::pear::discover { 'pear.phpqatools.org': }
   php::pear::discover { 'pear.phpunit.de': }
+  php::pear::discover { 'pear.netpirates.net': }
+  php::pear::discover { 'pear.symfony.com': }
+  php::pear::discover { 'pear.phpmd.org': }
+  php::pear::discover { 'pear.pdepend.org': }
   php::pear::discover { 'components.ez.no': }
-  php::pear::discover { 'pear.symfony-project.com': }
 }
