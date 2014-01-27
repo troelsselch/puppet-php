@@ -6,6 +6,15 @@ packaged modules, as well as extensions from the PHP Extension and Application
 Repository (PEAR). Also, it contains a class which can be used to install a
 wide selection of PHP quality assurance tools.
 
+This project was forked from https://github.com/wulff/puppet-php and has been updated to support CentOS.
+
+Support
+-------
+
+It has been tested on CentOS 6.4 from http://puppet-vagrant-boxes.puppetlabs.com/centos-64-x64-vbox4210.box.
+
+
+
 Basic usage
 -----------
 
@@ -43,3 +52,4 @@ Authors
 -------
 
 Morten Wulff <wulff@ratatosk.net>
+Troels Selch <troels@golthak.dk>
