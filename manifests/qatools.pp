@@ -12,7 +12,12 @@
 class php::qatools {
   include php::qatools::discover
 
-  package { 'imagemagick':
+  $imagemagick = $operatingsystem ? {
+    ubuntu => 'imagemagick',
+    centos => 'ImageMagick' # centos is case sensitive
+  }
+
+  package { $imagemagick:
     ensure => present,
   }
 
@@ -26,7 +31,7 @@ class php::qatools {
 
   php::pear::package { 'phpqatools':
     repository => 'pear.phpqatools.org',
-    require => Package['imagemagick'],
+    require => Package[$imagemagick],
   }
 
   php::pear::package { 'phpdcd':

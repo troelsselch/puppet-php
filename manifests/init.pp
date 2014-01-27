@@ -15,7 +15,12 @@
 #   }
 #
 class php($version = present) {
-  package { 'php5-cli':
+  $phpcli = $operatingsystem ? {
+    centos  => 'php-cli',
+    ubuntu  => 'php5-cli',
+  }
+
+  package { $phpcli:
     ensure => $version,
   }
 }

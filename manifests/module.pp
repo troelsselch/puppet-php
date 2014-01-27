@@ -23,9 +23,14 @@ define php::module(
   $restart = undef,
   $version = present
 ) {
-  package { "php5-${module}":
+  $phpbase = $operatingsystem ? {
+    centos  => 'php',
+    ubuntu  => 'php5',
+  }
+
+  package { "${phpbase}-${module}":
     ensure  => $version,
-    require => Package['php5-cli'],
+    require => Package["${phpbase}-cli"],
     notify  => $restart,
   }
 }
