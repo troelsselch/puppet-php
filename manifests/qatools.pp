@@ -42,10 +42,6 @@ class php::qatools {
     repository => 'pear.phpmd.org',
   }
 
-  php::pear::package { 'hphpa':
-    repository => 'pear.phpunit.de',
-  }
-
   php::pear::package { 'eZComponents':
     repository => 'components.ez.no', # TODO: use -a
   }
