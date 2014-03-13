@@ -29,9 +29,8 @@ class php::qatools {
     repository => 'pear.phpunit.de',
   }
 
-  php::pear::package { 'phpqatools':
-    repository => 'pear.phpqatools.org',
-    require => Package[$imagemagick],
+  php::pear::package { 'phploc':
+    repository => 'pear.phpunit.de',
   }
 
   php::pear::package { 'phpdcd':
@@ -64,7 +63,6 @@ class php::qatools {
 
 class php::qatools::discover {
   php::pear::discover { 'pear.phing.info': }
-  php::pear::discover { 'pear.phpqatools.org': }
   php::pear::discover { 'pear.phpunit.de': }
   php::pear::discover { 'pear.netpirates.net': }
   php::pear::discover { 'pear.symfony.com': }
